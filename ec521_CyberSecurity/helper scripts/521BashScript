@@ -1,0 +1,1 @@
+echo $1 | netcat ece-ec521-012.bu.edu 1234

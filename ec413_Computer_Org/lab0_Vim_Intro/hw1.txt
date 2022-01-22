@@ -1,0 +1,5 @@
+this is a test of vims,It has never worked for me before
+like never 
+never ever
+honestly I think I like nano better
+which is just a simple wrapper for cat > I think...

@@ -1,0 +1,166 @@
+############################################################################
+#                       Lab 3
+#                       EC413
+#
+#    		Assembly Language Lab -- Programming with Loops.
+#
+############################################################################
+#  DATA
+############################################################################
+        .data           # Data segment
+Hello:  .asciiz " \n Hello World! \n "  # declare a zero terminated string
+Hello_len: .word 16
+AnInt:	.word	12		# a word initialized to 12
+space:	.asciiz	" "	# declare a zero terminate string
+WordAvg:   .word 0		#use this variable for part 4
+ValidInt:  .word 0		#
+ValidInt2: .word 0		#
+lf:     .byte	10, 0	# string with carriage return and line feed
+InLenW:	.word   4       # initialize to number of words in input1 and input2
+InLenB:	.word   16      # initialize to number of bytes in input1 and input2
+        .align  4
+Input1:	.word	0x01020304,0x05060708
+	    .word	0x090A0B0C,0x0D0E0F10
+        .align  4
+Input2: .word   0x01221117,0x090b1d1f   # input
+        .word   0x0e1c2a08,0x06040210
+        .align  4
+Copy:  	.space  0x80    # space to copy input word by word
+        .align  4
+ 
+Enter: .asciiz "\n"
+Comma: .asciiz ","
+############################################################################
+#  CODE
+############################################################################
+        .text                   # code segment
+#
+# print out greeting
+#
+main:
+        la	$a0,Hello	# address of string to print
+        li	$v0,4		# system call code for print_str
+        syscall                 # print the string
+
+	
+#Code for Item 2
+#Count number of occurences of letter "l" in Hello string
+
+
+
+
+
+
+
+
+
+################################################################################
+        la	$a0,Enter	# address of string to print
+        li	$v0,4		# system call code for print_str
+        syscall                 # print the string
+################################################################################
+
+#
+# Code for Item 3 -- 
+# Print the integer value of numbers from 0 and less than AnInt
+#
+
+
+
+
+
+
+
+
+
+###################################################################################
+        la	$a0,Enter	# address of string to print
+        li	$v0,4		# system call code for print_str
+        syscall                 # print the string
+###################################################################################
+#
+# Code for Item 4 -- 
+# Print the integer values of each byte in the array Input1 (with spaces)
+#
+
+
+
+
+
+
+
+
+
+
+###################################################################################
+#
+# Code for Item 5 -- 
+# Write code to copy the contents of Input2 to Copy
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################
+        la	$a0,Enter	# address of string to print
+        li	$v0,4		# system call code for print_str
+        syscall                 # print the string
+###################################################################################
+#
+# Code for Item 6 -- 
+# Print the minimum, maximum, and integer average of the contents of array Input1
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################
+        la	$a0,Enter	# address of string to print
+        li	$v0,4		# system call code for print_str
+        syscall                 # print the string
+##################################################################################
+#
+# Code for Item 7 -- 
+# Display the first 30 integers that are divisible by either 7 and 13 (with comma)
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# Code for Item 8 -- 
+# Repeat step 7 but display the integers in 6 lines with 5 integers with spaces per line
+# This must be implemented using a nested loop.
+#
+
+Exit:
+	jr $ra

@@ -1,0 +1,54 @@
+6 )PROCESS OF DEVELOPMENT
+23 )CITATIONS 
+37 )EXPLANATION OF THREADS.C 
+
+
+Process of Development
+	To work on this homework I fisrt was convinced that I could get the extra credit done in time. 
+	To that end I frontloaded much of the research and functions. 
+	For a few days I worked casually on the extra credit, then after the midterm I began really focusing on it. 
+	I did very little over the weekend because I wrongly assumed the assignment was due Nov6. 
+	On monday I hit crunch time and started to pour myself into the homework. 
+	I spent the next days slowly makeing progress. 
+	The first problem I had was the join function. I had an issue correctly blocking it for the scheduler. 
+	This was solved on monday when I used sigmask to do the blocking process. 
+	I later had a problem where I was having trouble intializing my semiphore structure. 
+	This was resolved after I met with the T.A. camden and figured out that I need put my structure on the heap. 
+	The rest of my issues came primarily from how I linked the scheduler to the various semephore structures. 
+	For a long time I thought that all of my semiphore functions should start a timer.  
+	This resulted in a bunch of inifinate loops. 
+	I finally fixed these isses on my second all nighter at 6am. 
+	What a coding high.  
+Citations 
+	For main.c 
+		- producer consumer taken from lecture slides, got idea for this test after talking with Justin Melville
+		- thrd taken from https://www.geeksforgeeks.org/use-posix-semaphores-c/ which implements threads
+		- main is in general taken from homework disc 2 on piazza
+	For threads.c 
+		- pthread_self casting taken from a piazza post 
+		- pthread_exit locking and unlocking when accessing global vars from talking with Camden
+		- intializeMain implementation of sighandler taken from example given at https://pubs.opengroup.org/onlinepubs/009695399/functions/sigaction.html
+		- intialize steps involving complext casting operation from a dissuctuon with Camden and piazza post @152_f1
+		- pthread_create casting pthread_t to hold an int from conversation with Camden
+		- unlock changing sigmask comes from https://www.linuxprogrammingblog.com/code-examples/blocking-signals-with-sigprocmask
+		- sem_init the idea to use sem->__align as the field to a pointer from piazza and homework 
+		- many other ideas of how to do things from or enforced by discussion in OH waiting room 
+Explanation of theads.c 
+	most of my im implentation revolves around a central array of the tcb struct that is 128 long. 
+	This holds the each created thread. 
+	Each thread has information that helps with various functionallity. 
+	A thread has access to this information: 
+		-  its own number 
+		-  a stack with the process it is runing in it 
+		-  a jump buff that keeps track of where in the stack it is 
+		-  a status that tells the schuler if it is ready, running, exited, or unintialized 
+		-  a boolean that says if it is blocked by a join call 
+		-  an id of the thread that is waiting on its exit value, -1 if none are waiting 
+		-  a void pointer with the requested value from pthred_joine 
+		-  another void pointer with its own exit value incase it has a join request after it exits
+		-  a semaphore block that has the current semaphore id which is blocking this proces, 0 if not blocked
+	when a process is joined the block flag is put up and it does not go down untill the thread that it tagets exits. 
+	when a wait asks for a semaphore that is 0 a sem flag is put up in the thread that called wait it gets put down when a post is done on the same semaphore. 
+	when these flags are up the scheduler will not schedule these threads. 
+	when post is called on a semaphore it goes through the whole thread array and looks for a sem block with the same sem id and puts the flag down. 
+	The wait method has a loop because post frees all of the sem blocked threads at once. This means that they all need to reblock on the thread before continuing. 

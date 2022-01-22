@@ -1,0 +1,22 @@
+6 )PROCESS OF DEVELOPMENT
+23 )CITATIONS 
+37 )EXPLANATION OF THREADS.C 
+
+
+Process of Development
+	Most of the time spent on this homework was devoted to geting the all of edge cases. 
+	Because its really hard to tell if the homework was wrong it required me developing extensive tests. 
+	The first 2 days I spend doing research in the man pages for mmap and sigaction as well as copying and reviewing the discussion lectures slides code. The first problem I ran into was that the auto grader didnt like it when I used my pthread library. As soon as I started using the regular one it began to 
+	work. I spent more time than I would like to admit getting my makefile to work. After that the rest of the time I spent writing test cases and debugging my program. This homework was easier than the others for me,but I spend around 9 hours on a wrong implementation. 
+Citations 
+	For main.c 
+		- many of my instperations for a test cases are from terrier 089
+	For tls.c 
+		-tls_protect is from lecture slide
+		-tls_unprotect is from lecture slide
+		-tls_init is from lecture slide
+		-tls_handle_page_fault is from lecture slide
+		-tls_write for loop is from lecture slide
+		-tls_read for loop is from lecture slide
+		-tls_destroy for loop is from lecture slide
+		-tls_create for loop is from lecture slide

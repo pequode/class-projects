@@ -1,0 +1,62 @@
+This project was a dosie for me. I had many problems along the way and honestly without the help of the TF's and lots of man pages I don't know if I'd have finished. 
+In terms of my plan it kinda went like this:
+
+-Make a simple create thread function that allowed me to only pass in argos and run a program to seg fault  
+- Then add in the TCB object type and have the create thread use it to initials that first program 
+- Then create a sig handler 
+- then create 2 threads and then force them to switch back and forth. 
+-then create a scheduler and use it to switch them automatically 
+- next create a exit function 
+- next create pthread self 
+- profit. 
+
+However, this plan did not end up being how I implemented my code. Ultimately it looked a lot more like this:
+ 
+-Make a simple create thread function that allowed me to only pass in argos and run a program to segfault  
+(Oh I'm getting an error before it even runs the program. hmm better move on) 
+-  Then add in the TCB object type and have the create thread use it to initials that first program 
+(wow that was so easy!)
+- Then create a sig handler
+(another easy task I don't even need to go to office hours!)
+- Then create 2 threads and then force them to switch back and forth.
+(better wait till I finish before I deal with this. the stack is so hard to understand)
+-Then create a scheduler and use it to switch them automatically 
+(man this is way easier than anything in 330)
+-  next create a exit function
+(hmm well I think this works I mean it prints exit and does what the hw says it should do) 
+-  go back to the simple create
+(this is a lot more in depth than I thought, I guess I have to review the lecture slides)
+- get stuck on the passing in arg and funct to R12 and R13 for 2 days 
+(hmm this is probably impossible)
+go to OH and see that R12 and R13 dont get mangled by the OS
+things start to work by pthread_exit wont run 
+go to OH the night before its due. 
+turns out you need to cast the stack pointer before the assignment 
+debug all night 
+it works for some test
+I think this showed my the importance of going to OH early and often and that although other programing classes have been intuitive for me I am now in a place where it is very important to read up on the functions I am using.  I also think I have come to understand the importance of working with others to conceptualize the project. Before I started coding I talked with a few other students about how we each would go about solving this problem. I think that although it seems like I made some errors in implementation this process made things easier and allowed me to get a more fundamental understanding of what it was I was supposed to be doing. I have comments in my code to make it clear what each function does but here is an example of my program execution. 
+
+Main- run 
+pthread_create( funct arg)
+create main thread 
+start timer 
+create second thread 
+pthread_create( funct arg)
+timer goes off 
+scheduler switches to second thread
+start timer  
+second thread executes 
+timer goes off 
+scheduler switches to main
+start timer 
+	create third thread
+timer goes off 
+scheduler switches to third thread 
+set timer 
+third thread executes 
+timer goes off 
+scheduler switches to main
+set timer
+main finishes
+program exits 
+

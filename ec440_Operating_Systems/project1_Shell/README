@@ -1,0 +1,19 @@
+*OOF
+This assignemnt did not turn out well for me. 
+I am very frustrated with my results and understand how dissapointing they seem. 
+I think I was fooled by early success using the exec commands along with and over confidence on my C programing ablility. 
+I ended up spending around 25 hours trying to figure out pipe alone. 
+I also fell into a trap of feeling so close to the solution that I ended up neglecting the more fundimental parts of the assignment. 
+I have a bug in my char parser that currently makes it mess up the end of the 2d array making it not pass to execvp.
+I also have no idea how to string multiple pipes together. 
+I have had success with a single pipe comand but of course I havent implemented it in my shell yet. 
+My outline for my shell was as follows:
+	-check for cntrl-d
+	-get a char[512] from the stdin
+	-convert it into a char[204][32] with each row representing a differnt possible comand and the array ending in a null so it could be pased easily to execvp if the last char was a & it would be noted 
+	-convert that into a ***char with each set of commands being seporated by a < > or |  
+	-a seporate int array would hold a number corispoinding to each comand
+	-then a for loop and a switch statement would fork over everything in the ***char doing the various fid assignments  
+	-tidy up all the child proceses 
+	-loop back to the begining
+I should have written more in my readME but I ran out of time becasue I was trying to fix my program. 

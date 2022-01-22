@@ -1,0 +1,3 @@
+#!/bin/bash
+sshfs georgeks@eng-grid:/home/georgeks /home/whorehay/Desktop/ec413/eng-grid -p 10001 -o nonempty,IdentityFile=~/.ssh/identity,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3
+
